@@ -2,17 +2,10 @@
 
 Setup and manage CloudTrail
 
-### Variables
+### Argument Reference
 
-#### Required
-
-* `name`: Name of CloudTrail trail.
-* `region`: AWS region. Used to find remote state.
-
-
-
-#### Optional
-
+* `name`: (Required) Name of CloudTrail trail.
+* `region`: (Required) AWS region. Used to find remote state.
 * `enable_logging`: Enable logging, set to `false` to Pause logging (`default = true`)
 * `enable_log_file_validation`: Create signed digest file to validated contents of logs (`default = true`)
 * `include_global_service_events`: Include evnets from global services such as IAM (`default = false`)
