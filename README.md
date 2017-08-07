@@ -13,10 +13,10 @@ Setup and manage CloudTrail
 
 #### Optional
 
-* `enable_logging`: Enable logging, set to 'false' to Pause logging (default = true)
-* `enable_log_file_validation`: Create signed digest file to validated contents of logs (default = true)
-* `include_global_service_events`: Include evnets from global services such as IAM (default = false)
-* `is_multi_region_trail`: Whether the trail is created in all regions or just the current region (default = false)
+* `enable_logging`: Enable logging, set to `false` to Pause logging (`default = true`)
+* `enable_log_file_validation`: Create signed digest file to validated contents of logs (`default = true`)
+* `include_global_service_events`: Include evnets from global services such as IAM (`default = false`)
+* `is_multi_region_trail`: Whether the trail is created in all regions or just the current region (`default = false`)
 
 ## Usage
 ```
