@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "name" {
-  default = ""
+  default = "cloudtrails"
 }
 
 variable "namespace" {
