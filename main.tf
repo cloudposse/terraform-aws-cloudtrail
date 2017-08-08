@@ -14,38 +14,54 @@ resource "aws_cloudtrail" "default" {
   include_global_service_events = "${var.include_global_service_events}"
 }
 
-resource "aws_s3_bucket" "default" {
-  bucket        = "${module.tf_label.id}"
-  force_destroy = false
+data "aws_iam_policy_document" "cloudtrail" {
+  statement {
+    sid = "AWSCloudTrailAclCheck"
 
-  policy = <<POLICY
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AWSCloudTrailAclCheck",
-            "Effect": "Allow",
-            "Principal": {
-              "Service": "cloudtrail.amazonaws.com"
-            },
-            "Action": "s3:GetBucketAcl",
-            "Resource": "arn:aws:s3:::${module.tf_label.id}"
-        },
-        {
-            "Sid": "AWSCloudTrailWrite",
-            "Effect": "Allow",
-            "Principal": {
-              "Service": "cloudtrail.amazonaws.com"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${module.tf_label.id}/*",
-            "Condition": {
-                "StringEquals": {
-                    "s3:x-amz-acl": "bucket-owner-full-control"
-                }
-            }
-        }
+    principals {
+      type = "Service"
+      identifiers = ["cloudtrail.amazonaws.com"]
+    }
+
+    actions = [
+      "s3:GetBucketAcl",
     ]
+
+    resources = [
+      "arn:aws:s3:::${module.tf_label.id}"
+    ]
+  }
+
+  statement {
+    sid = "AWSCloudTrailWrite"
+
+    principals {
+      type = "Service"
+      identifiers = ["cloudtrail.amazonaws.com"]
+    }
+
+    actions = [
+      "s3:PutObject",
+    ]
+
+    resources = [
+      "arn:aws:s3:::${module.tf_label.id}/*"
+    ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "s3:x-amz-acl"
+
+      values = [
+        "bucket-owner-full-control"
+      ]
+    }
+  }
 }
-POLICY
+
+
+resource "aws_s3_bucket" "default" {
+  bucket = "${module.tf_label.id}"
+  force_destroy = false
+  policy = "${data.aws_iam_policy_document.cloudtrail.json}"
 }
