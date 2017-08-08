@@ -14,7 +14,7 @@ resource "aws_cloudtrail" "default" {
   include_global_service_events = "${var.include_global_service_events}"
 }
 
-data "aws_iam_policy_document" "cloudtrail" {
+data "aws_iam_policy_document" "default" {
   statement {
     sid = "AWSCloudTrailAclCheck"
 
@@ -63,5 +63,5 @@ data "aws_iam_policy_document" "cloudtrail" {
 resource "aws_s3_bucket" "default" {
   bucket = "${module.tf_label.id}"
   force_destroy = false
-  policy = "${data.aws_iam_policy_document.cloudtrail.json}"
+  policy = "${data.aws_iam_policy_document.default.json}"
 }
