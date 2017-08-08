@@ -14,7 +14,7 @@ Setup and manage CloudTrail
 ## Usage
 ```
 module "cloudtrails" {
-  source                        = "git::https://github.com/cloudposse/tf_cloudtrail.git?ref=master"
+  source                        = "git::https://github.com/cloudposse/tf_cloudtrail.git?ref=0.1.0"
   name                          = "${var.name}"
   stage                         = "${var.stage}"
   namespace                     = "${var.namespace}"
