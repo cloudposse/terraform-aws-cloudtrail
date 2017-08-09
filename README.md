@@ -2,7 +2,7 @@
 
 Setup and manage CloudTrail
 
-### Argument Reference
+## Argument Reference
 
 * `name`: (Required) Name of CloudTrail trail.
 * `region`: (Required) AWS region. Used to find remote state.
