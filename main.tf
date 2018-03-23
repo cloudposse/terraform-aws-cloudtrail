@@ -10,11 +10,12 @@ module "cloudtrail_label" {
 
 resource "aws_cloudtrail" "default" {
   name                          = "${module.cloudtrail_label.id}"
-  s3_bucket_name                = "${aws_s3_bucket.default.id}"
+  s3_bucket_name                = "${module.s3_log_storage.bucket_id}"
   enable_logging                = "${var.enable_logging}"
   enable_log_file_validation    = "${var.enable_log_file_validation}"
   is_multi_region_trail         = "${var.is_multi_region_trail}"
   include_global_service_events = "${var.include_global_service_events}"
+  tags                          = "${module.cloudtrail_label.tags}"
 }
 
 data "aws_iam_policy_document" "default" {
@@ -62,8 +63,19 @@ data "aws_iam_policy_document" "default" {
   }
 }
 
-resource "aws_s3_bucket" "default" {
-  bucket        = "${module.cloudtrail_label.id}"
-  force_destroy = false
-  policy        = "${data.aws_iam_policy_document.default.json}"
+# https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
+module "s3_log_storage" {
+  source                 = "git::https://github.com/cloudposse/terraform-aws-s3-log-storage.git?ref=tags/0.2.0"
+  namespace              = "${var.namespace}"
+  stage                  = "${var.stage}"
+  name                   = "${var.name}"
+  region                 = "${var.region}"
+  acl                    = "${var.acl}"
+  policy                 = "${data.aws_iam_policy_document.default.json}"
+  force_destroy          = "false"
+  versioning_enabled     = "true"
+  lifecycle_rule_enabled = "false"
+  delimiter              = "${var.delimiter}"
+  attributes             = ["${compact(concat(var.attributes, list("cloudtrail", "logs")))}"]
+  tags                   = "${var.tags}"
 }
