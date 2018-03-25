@@ -31,23 +31,6 @@ variable "tags" {
   description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
 }
 
-variable "acl" {
-  type        = "string"
-  description = "Canned ACL to apply to the log storage S3 bucket"
-  default     = "log-delivery-write"
-}
-
-variable "region" {
-  type        = "string"
-  default     = "us-east-1"
-  description = "AWS Region for S3 bucket to store CloudTrail logs"
-}
-
-variable "enable_logging" {
-  default     = "true"
-  description = "Enable logging for the trail"
-}
-
 variable "enable_log_file_validation" {
   default     = "true"
   description = "Specifies whether log file integrity validation is enabled. Creates signed digest for validated contents of logs"
@@ -61,4 +44,14 @@ variable "is_multi_region_trail" {
 variable "include_global_service_events" {
   default     = "false"
   description = "Specifies whether the trail is publishing events from global services such as IAM to the log files"
+}
+
+variable "enable_logging" {
+  default     = "true"
+  description = "Enable logging for the trail"
+}
+
+variable "s3_bucket_name" {
+  type        = "string"
+  description = "S3 bucket name for CloudTrail logs"
 }
