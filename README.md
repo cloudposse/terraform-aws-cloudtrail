@@ -1,6 +1,6 @@
 # terraform-aws-cloudtrail [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail)
 
-Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtrail/)
+Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtrail/).
 
 The module accepts an encrypted S3 bucket with versioning to store CloudTrail logs.
 
@@ -18,15 +18,44 @@ while the S3 bucket to store the CloudTrail logs is created in the Audit AWS acc
 module "cloudtrail" {
   source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
   namespace                     = "cp"
-  stage                         = "prod"
+  stage                         = "dev"
   name                          = "cluster"
   enable_log_file_validation    = "true"
-  include_global_service_events = "false"
+  include_global_service_events = "true"
   is_multi_region_trail         = "false"
   enable_logging                = "true"
   s3_bucket_name                = "my-cloudtrail-logs-bucket"
 }
 ```
+
+__NOTE:__ To create an S3 bucket for CloudTrail logs, use [terraform-aws-cloudtrail-s3-bucket](https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket) module.
+It creates an S3 bucket and an IAM policy to allow CloudTrail logs.
+
+
+```hcl
+module "cloudtrail" {
+  source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
+  namespace                     = "cp"
+  stage                         = "dev"
+  name                          = "cluster"
+  enable_log_file_validation    = "true"
+  include_global_service_events = "true"
+  is_multi_region_trail         = "false"
+  enable_logging                = "true"
+  s3_bucket_name                = "${module.cloudtrail_s3_bucket.bucket_id}"
+}
+
+module "cloudtrail_s3_bucket" {
+  source    = "git::https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket.git?ref=master"
+  namespace = "cp"
+  stage     = "dev"
+  name      = "cluster"
+  region    = "us-east-1"
+}
+```
+
+For a complete example, see [examples/complete](examples/complete).
+
 
 ## Variables
 
