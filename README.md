@@ -4,7 +4,7 @@ Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtr
 
 The module accepts an encrypted S3 bucket with versioning to store CloudTrail logs.
 
-The bucket could be from the same ASW account or from a different account.
+The bucket could be from the same AWS account or from a different account.
 
 This is useful if an organization uses a number of separate AWS accounts to isolate the Audit environment from other environments (production, staging, development).
 
