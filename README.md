@@ -71,7 +71,11 @@ For a complete example, see [examples/complete](examples/complete).
 | `include_global_service_events`  | `false`              | Specifies whether the trail is publishing events from global services such as IAM to the log files | No       |
 | `is_multi_region_trail`          | `false`              | Specifies whether the trail is created in the current region or in all regions                     | No       |
 | `enable_logging`                 | `true`               | Enable logging for the trail. Logs will be stored in the S3 bucket                                 | No       |
-| `s3_bucket_name`                 | ``                   | S3 bucket name for CloudTrail logs                                                                 | Yes (if `enable_logging`=`true`)  |
+| `s3_bucket_name`                 | ``                   | S3 bucket name for CloudTrail logs                                                                 | Yes (if `enable_logging` = `true`)  |
+| `cloud_watch_logs_role_arn`      | ``                   | Specifies the role for the CloudWatch Logs endpoint to assume to write to a user’s log group       | No       |
+| `cloud_watch_logs_group_arn`     | ``                   | Specifies a log group name using an Amazon Resource Name (ARN), that represents the log group to which CloudTrail logs will be delivered | No       |
+| `event_selector`                 | ``                   | Specifies an event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable | No       |
+| `kms_key_id`                     | ``                   | Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail                       | No        |
 
 
 ## Outputs
