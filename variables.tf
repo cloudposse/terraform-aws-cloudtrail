@@ -55,3 +55,24 @@ variable "s3_bucket_name" {
   type        = "string"
   description = "S3 bucket name for CloudTrail logs"
 }
+
+variable "cloud_watch_logs_role_arn" {
+  description = "Specifies the role for the CloudWatch Logs endpoint to assume to write to a user’s log group"
+  default     = ""
+}
+
+variable "cloud_watch_logs_group_arn" {
+  description = "Specifies a log group name using an Amazon Resource Name (ARN), that represents the log group to which CloudTrail logs will be delivered"
+  default     = ""
+}
+
+variable "event_selector" {
+  type        = "map"
+  description = "Specifies an event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable"
+  default     = {}
+}
+
+variable "kms_key_id" {
+  description = "Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail"
+  default     = ""
+}
