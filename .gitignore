@@ -6,3 +6,5 @@
 .terraform/
 .idea
 terraform-aws-cloudtrail.iml
+.build-harness
+build-harness
