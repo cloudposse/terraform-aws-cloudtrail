@@ -40,6 +40,7 @@ description: |-
 
   In this case, you create CloudTrail in the production environment (production AWS account),
   while the S3 bucket to store the CloudTrail logs is created in the Audit AWS account, restricting access to the logs only to the users/groups from the Audit account.
+
 # How to use this project
 usage: |-
   ```hcl
