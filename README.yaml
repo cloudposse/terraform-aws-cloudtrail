@@ -28,6 +28,17 @@ badges:
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
 
+related:
+  - name: "terraform-aws-cloudtrail-cloudwatch-alarms"
+    description: "Terraform module for creating alarms for tracking important changes and occurances from cloudtrail."
+    url: "https://github.com/cloudposse/terraform-aws-cloudtrail-cloudwatch-alarms"
+  - name: "terraform-aws-cloudtrail-s3-bucket"
+    description: "S3 bucket with built in IAM policy to allow CloudTrail logs"
+    url: "https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket"
+  - name: "terraform-aws-s3-log-storage"
+    description: "This module creates an S3 bucket suitable for receiving logs from other AWS services such as S3, CloudFront, and CloudTrail"
+    url: "https://github.com/cloudposse/terraform-aws-s3-log-storage"
+
 # Short description of this project
 description: |-
   Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtrail/).
