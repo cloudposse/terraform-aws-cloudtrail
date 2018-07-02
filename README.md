@@ -54,7 +54,7 @@ module "cloudtrail_s3_bucket" {
 }
 ```
 
-For a complete example, see [examples/complete](examples/complete).
+For a complete example, see [examples/complete](https://github.com/cloudposse/terraform-aws-cloudtrail/tree/master/examples/complete).
 
 
 ## Variables
