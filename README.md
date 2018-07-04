@@ -2,7 +2,7 @@
 
 [![Cloud Posse](https://cloudposse.com/logo-300x69.png)](https://cloudposse.com)
 
-# terraform-aws-cloudtrail  [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-cloudtrail.svg)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail/releases) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+# terraform-aws-cloudtrail [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-cloudtrail.svg)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail/releases) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 
 
 Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtrail/).
@@ -138,6 +138,8 @@ Work directly with our team of DevOps experts via email, slack, and video confer
 
 We provide *commercial support* for all of our [Open Source][github] projects. As a *Dedicated Support* customer, you have access to our team of subject matter experts at a fraction of the cost of a fulltime engineer. 
 
+[![E-Mail](https://img.shields.io/badge/email-hello@cloudposse.com-blue.svg)](mailto:hello@cloudposse.com)
+
 - **Questions.** We'll use a Shared Slack channel between your team and ours.
 - **Troubleshooting.** We'll help you triage why things aren't working.
 - **Code Reviews.** We'll review your Pull Requests and provide constructive feedback.
@@ -145,6 +147,7 @@ We provide *commercial support* for all of our [Open Source][github] projects. A
 - **Build New Terraform Modules.** We'll develop original modules to provision infrastructure.
 - **Cloud Architecture.** We'll assist with your cloud strategy and design.
 - **Implementation.** We'll provide hands on support to implement our reference architectures. 
+
 
 ## Community Forum
 
@@ -232,12 +235,12 @@ Check out [our other projects][github], [apply for a job][jobs], or [hire us][hi
 |---|---|---|---|
 
   [aknysh_homepage]: https://github.com/aknysh
-  [aknysh_avatar]: https://avatars0.githubusercontent.com/u/7356997?v=4&u=ed9ce1c9151d552d985bdf5546772e14ef7ab617&s=144
+  [aknysh_avatar]: https://github.com/aknysh.png?size=150
   [s2504s_homepage]: https://github.com/s2504s
-  [s2504s_avatar]: https://avatars0.githubusercontent.com/u/1134449?s=460&v=4
+  [s2504s_avatar]: https://github.com/s2504s.png?size=150
   [drama17_homepage]: https://github.com/drama17
-  [drama17_avatar]: https://avatars0.githubusercontent.com/u/10601658?s=460&v=4
+  [drama17_avatar]: https://github.com/drama17.png?size=150
   [Jamie-BitFlight_homepage]: https://github.com/Jamie-BitFlight
-  [Jamie-BitFlight_avatar]: https://avatars2.githubusercontent.com/u/25075504?s=460&v=4
+  [Jamie-BitFlight_avatar]: https://github.com/Jamie-BitFlight.png?size=150
 
 
