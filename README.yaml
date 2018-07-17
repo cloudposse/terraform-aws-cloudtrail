@@ -1,0 +1,112 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-aws-cloudtrail
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: "APACHE2"
+
+# Canonical GitHub repo
+github_repo: cloudposse/terraform-aws-cloudtrail
+
+# Badges to display
+badges:
+  - name: "Build Status"
+    image: "https://travis-ci.org/cloudposse/terraform-aws-cloudtrail.svg?branch=master"
+    url: "https://travis-ci.org/cloudposse/terraform-aws-cloudtrail"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-cloudtrail.svg"
+    url: "https://travis-ci.org/cloudposse/terraform-aws-cloudtrail/releases"
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/badge.svg"
+    url: "https://slack.cloudposse.com"
+
+related:
+  - name: "terraform-aws-cloudtrail-cloudwatch-alarms"
+    description: "Terraform module for creating alarms for tracking important changes and occurances from cloudtrail."
+    url: "https://github.com/cloudposse/terraform-aws-cloudtrail-cloudwatch-alarms"
+  - name: "terraform-aws-cloudtrail-s3-bucket"
+    description: "S3 bucket with built in IAM policy to allow CloudTrail logs"
+    url: "https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket"
+  - name: "terraform-aws-s3-log-storage"
+    description: "This module creates an S3 bucket suitable for receiving logs from other AWS services such as S3, CloudFront, and CloudTrail"
+    url: "https://github.com/cloudposse/terraform-aws-s3-log-storage"
+
+# Short description of this project
+description: |-
+  Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtrail/).
+
+  The module accepts an encrypted S3 bucket with versioning to store CloudTrail logs.
+
+  The bucket could be from the same AWS account or from a different account.
+
+  This is useful if an organization uses a number of separate AWS accounts to isolate the Audit environment from other environments (production, staging, development).
+
+  In this case, you create CloudTrail in the production environment (production AWS account),
+  while the S3 bucket to store the CloudTrail logs is created in the Audit AWS account, restricting access to the logs only to the users/groups from the Audit account.
+
+# How to use this project
+usage: |-
+  ```hcl
+  module "cloudtrail" {
+    source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
+    namespace                     = "cp"
+    stage                         = "dev"
+    name                          = "cluster"
+    enable_log_file_validation    = "true"
+    include_global_service_events = "true"
+    is_multi_region_trail         = "false"
+    enable_logging                = "true"
+    s3_bucket_name                = "my-cloudtrail-logs-bucket"
+  }
+  ```
+
+  __NOTE:__ To create an S3 bucket for CloudTrail logs, use [terraform-aws-cloudtrail-s3-bucket](https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket) module.
+  It creates an S3 bucket and an IAM policy to allow CloudTrail logs.
+
+
+  ```hcl
+  module "cloudtrail" {
+    source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
+    namespace                     = "cp"
+    stage                         = "dev"
+    name                          = "cluster"
+    enable_log_file_validation    = "true"
+    include_global_service_events = "true"
+    is_multi_region_trail         = "false"
+    enable_logging                = "true"
+    s3_bucket_name                = "${module.cloudtrail_s3_bucket.bucket_id}"
+  }
+
+  module "cloudtrail_s3_bucket" {
+    source    = "git::https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket.git?ref=master"
+    namespace = "cp"
+    stage     = "dev"
+    name      = "cluster"
+    region    = "us-east-1"
+  }
+  ```
+
+  For a complete example, see [examples/complete](examples/complete).
+
+include:
+  - "docs/targets.md"
+  - "docs/terraform.md"
+
+# Contributors to this project
+contributors:
+  - name: "Andriy Knysh"
+    github: "aknysh"
+  - name: "Sergey Vasilyev"
+    github: "s2504s"
+  - name: "Valeriy"
+    github: "drama17"
+  - name: "Jamie Nelson"
+    github: "Jamie-BitFlight"
