@@ -67,9 +67,9 @@ variable "cloud_watch_logs_group_arn" {
 }
 
 variable "event_selector" {
-  type        = "map"
-  description = "Specifies an event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable"
-  default     = {}
+  type        = "list"
+  description = "Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable"
+  default     = []
 }
 
 variable "kms_key_id" {
