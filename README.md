@@ -86,8 +86,9 @@ For a complete example, see [examples/complete](examples/complete).
 ```
 Available targets:
 
-  help                                This help screen
+  help                                Help screen
   help/all                            Display help for all targets
+  help/short                          This help short screen
   lint                                Lint terraform code
 
 ```
@@ -102,7 +103,7 @@ Available targets:
 | delimiter | Delimiter to be used between `namespace`, `stage`, `name` and `attributes` | string | `-` | no |
 | enable_log_file_validation | Specifies whether log file integrity validation is enabled. Creates signed digest for validated contents of logs | string | `true` | no |
 | enable_logging | Enable logging for the trail | string | `true` | no |
-| event_selector | Specifies an event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable | map | `<map>` | no |
+| event_selector | Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable | list | `<list>` | no |
 | include_global_service_events | Specifies whether the trail is publishing events from global services such as IAM to the log files | string | `false` | no |
 | is_multi_region_trail | Specifies whether the trail is created in the current region or in all regions | string | `false` | no |
 | kms_key_id | Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail | string | `` | no |
