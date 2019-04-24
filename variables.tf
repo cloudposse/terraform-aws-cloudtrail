@@ -78,6 +78,6 @@ variable "kms_key_id" {
 }
 
 variable "is_organization_trail" {
-  type        = "false"
+  default     = "false"
   description = "The trail is an AWS Organizations trail"
 }
