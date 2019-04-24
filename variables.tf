@@ -76,3 +76,8 @@ variable "kms_key_id" {
   description = "Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail"
   default     = ""
 }
+
+variable "is_organization_trail" {
+  type        = "false"
+  description = "The trail is an AWS Organizations trail"
+}
