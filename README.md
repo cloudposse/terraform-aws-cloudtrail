@@ -106,6 +106,7 @@ Available targets:
 | event_selector | Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable | list | `<list>` | no |
 | include_global_service_events | Specifies whether the trail is publishing events from global services such as IAM to the log files | string | `false` | no |
 | is_multi_region_trail | Specifies whether the trail is created in the current region or in all regions | string | `false` | no |
+| is_organization_trail | The trail is an AWS Organizations trail | string | `"false"` | no |
 | kms_key_id | Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail | string | `` | no |
 | name | Name  (e.g. `app` or `cluster`) | string | - | yes |
 | namespace | Namespace (e.g. `cp` or `cloudposse`) | string | - | yes |
