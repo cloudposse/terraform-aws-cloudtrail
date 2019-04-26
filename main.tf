@@ -20,4 +20,5 @@ resource "aws_cloudtrail" "default" {
   tags                          = "${module.cloudtrail_label.tags}"
   event_selector                = "${var.event_selector}"
   kms_key_id                    = "${var.kms_key_id}"
+  is_organization_trail         = "${var.is_organization_trail}"
 }
