@@ -1,5 +1,6 @@
 module "cloudtrail_label" {
   source     = "git::https://github.com/cloudposse/terraform-terraform-label.git?ref=tags/0.1.2"
+  enabled    = "${var.enabled}"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
   name       = "${var.name}"
@@ -10,6 +11,7 @@ module "cloudtrail_label" {
 
 resource "aws_cloudtrail" "default" {
   name                          = "${module.cloudtrail_label.id}"
+  count                         = "${var.enabled == "true" ? 1 : 0}"
   enable_logging                = "${var.enable_logging}"
   s3_bucket_name                = "${var.s3_bucket_name}"
   enable_log_file_validation    = "${var.enable_log_file_validation}"

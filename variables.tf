@@ -1,3 +1,8 @@
+variable "enabled" {
+  description = "If true, deploy the resources for the module"
+  default     = "true"
+}
+
 variable "namespace" {
   description = "Namespace (e.g. `cp` or `cloudposse`)"
   type        = "string"
