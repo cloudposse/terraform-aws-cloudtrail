@@ -1,63 +1,63 @@
 variable "enabled" {
   description = "If true, deploy the resources for the module"
-  default     = "true"
+  default     = true
 }
 
 variable "namespace" {
   description = "Namespace (e.g. `cp` or `cloudposse`)"
-  type        = "string"
+  type        = string
 }
 
 variable "stage" {
   description = "Stage (e.g. `prod`, `dev`, `staging`)"
-  type        = "string"
+  type        = string
 }
 
 variable "name" {
   description = "Name  (e.g. `app` or `cluster`)"
-  type        = "string"
+  type        = string
 }
 
 variable "delimiter" {
-  type        = "string"
+  type        = string
   default     = "-"
   description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
 }
 
 variable "attributes" {
-  type        = "list"
+  type        = list(string)
   default     = []
   description = "Additional attributes (e.g. `logs`)"
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map(string)
   default     = {}
   description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
 }
 
 variable "enable_log_file_validation" {
-  default     = "true"
+  default     = true
   description = "Specifies whether log file integrity validation is enabled. Creates signed digest for validated contents of logs"
 }
 
 variable "is_multi_region_trail" {
-  default     = "false"
+  default     = false
   description = "Specifies whether the trail is created in the current region or in all regions"
 }
 
 variable "include_global_service_events" {
-  default     = "false"
+  default     = false
   description = "Specifies whether the trail is publishing events from global services such as IAM to the log files"
 }
 
 variable "enable_logging" {
-  default     = "true"
+  default     = true
   description = "Enable logging for the trail"
 }
 
 variable "s3_bucket_name" {
-  type        = "string"
+  type        = string
   description = "S3 bucket name for CloudTrail logs"
 }
 
@@ -72,7 +72,7 @@ variable "cloud_watch_logs_group_arn" {
 }
 
 variable "event_selector" {
-  type        = "list"
+  type        = list(string)
   description = "Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable"
   default     = []
 }
@@ -83,6 +83,6 @@ variable "kms_key_id" {
 }
 
 variable "is_organization_trail" {
-  default     = "false"
+  default     = false
   description = "The trail is an AWS Organizations trail"
 }
