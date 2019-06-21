@@ -5,33 +5,33 @@ variable "enabled" {
 
 variable "namespace" {
   description = "Namespace (e.g. `cp` or `cloudposse`)"
-  type        = "string"
+  type        = string
 }
 
 variable "stage" {
   description = "Stage (e.g. `prod`, `dev`, `staging`)"
-  type        = "string"
+  type        = string
 }
 
 variable "name" {
   description = "Name  (e.g. `app` or `cluster`)"
-  type        = "string"
+  type        = string
 }
 
 variable "delimiter" {
-  type        = "string"
+  type        = string
   default     = "-"
   description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
 }
 
 variable "attributes" {
-  type        = "list"
+  type        = list(string)
   default     = []
   description = "Additional attributes (e.g. `logs`)"
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map(string)
   default     = {}
   description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
 }
@@ -57,7 +57,7 @@ variable "enable_logging" {
 }
 
 variable "s3_bucket_name" {
-  type        = "string"
+  type        = string
   description = "S3 bucket name for CloudTrail logs"
 }
 
@@ -72,7 +72,7 @@ variable "cloud_watch_logs_group_arn" {
 }
 
 variable "event_selector" {
-  type        = "list"
+  type        = list(string)
   description = "Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable"
   default     = []
 }
@@ -86,3 +86,4 @@ variable "is_organization_trail" {
   default     = "false"
   description = "The trail is an AWS Organizations trail"
 }
+

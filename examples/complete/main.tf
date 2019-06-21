@@ -1,5 +1,5 @@
 module "cloudtrail" {
-  source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
+  source                        = "git::https://github.com/rverma-nikiai/terraform-aws-cloudtrail.git?ref=master"
   namespace                     = "cp"
   stage                         = "dev"
   name                          = "cluster"
@@ -11,7 +11,7 @@ module "cloudtrail" {
 }
 
 module "cloudtrail_s3_bucket" {
-  source    = "git::https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket.git?ref=master"
+  source    = "git::https://github.com/rverma-nikiai/terraform-aws-cloudtrail-s3-bucket.git?ref=master"
   namespace = "cp"
   stage     = "dev"
   name      = "cluster"
