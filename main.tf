@@ -1,5 +1,5 @@
 module "cloudtrail_label" {
-  source     = "git::https://github.com/rverma-nikiai/terraform-null-label.git?ref=master"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=master"
   enabled    = var.enabled
   namespace  = var.namespace
   stage      = var.stage
