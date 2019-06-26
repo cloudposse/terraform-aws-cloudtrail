@@ -18,9 +18,9 @@ github_repo: cloudposse/terraform-aws-cloudtrail
 
 # Badges to display
 badges:
-  - name: "Build Status"
-    image: "https://travis-ci.org/cloudposse/terraform-aws-cloudtrail.svg?branch=master"
-    url: "https://travis-ci.org/cloudposse/terraform-aws-cloudtrail"
+  - name: "Codefresh Build Status"
+    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-cloudtrail?type=cf-1"
+    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5d128233c6e335c15aa1317c"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-cloudtrail.svg"
     url: "https://travis-ci.org/cloudposse/terraform-aws-cloudtrail/releases"
@@ -57,13 +57,13 @@ usage: |-
   ```hcl
   module "cloudtrail" {
     source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
-    namespace                     = "cp"
+    namespace                     = "eg"
     stage                         = "dev"
     name                          = "cluster"
-    enable_log_file_validation    = "true"
-    include_global_service_events = "true"
-    is_multi_region_trail         = "false"
-    enable_logging                = "true"
+    enable_log_file_validation    = true
+    include_global_service_events = true
+    is_multi_region_trail         = false
+    enable_logging                = true
     s3_bucket_name                = "my-cloudtrail-logs-bucket"
   }
   ```
@@ -75,19 +75,19 @@ usage: |-
   ```hcl
   module "cloudtrail" {
     source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
-    namespace                     = "cp"
+    namespace                     = "eg"
     stage                         = "dev"
     name                          = "cluster"
-    enable_log_file_validation    = "true"
-    include_global_service_events = "true"
-    is_multi_region_trail         = "false"
-    enable_logging                = "true"
-    s3_bucket_name                = "${module.cloudtrail_s3_bucket.bucket_id}"
+    enable_log_file_validation    = true
+    include_global_service_events = true
+    is_multi_region_trail         = false
+    enable_logging                = true
+    s3_bucket_name                = module.cloudtrail_s3_bucket.bucket_id
   }
 
   module "cloudtrail_s3_bucket" {
     source    = "git::https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket.git?ref=master"
-    namespace = "cp"
+    namespace = "eg"
     stage     = "dev"
     name      = "cluster"
     region    = "us-east-1"
@@ -102,6 +102,8 @@ include:
 
 # Contributors to this project
 contributors:
+  - name: "Erik Osterman"
+    github: "osterman"
   - name: "Andriy Knysh"
     github: "aknysh"
   - name: "Sergey Vasilyev"

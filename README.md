@@ -3,7 +3,7 @@
 
 [![Cloud Posse][logo]](https://cpco.io/homepage)
 
-# terraform-aws-cloudtrail [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-cloudtrail.svg)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail/releases) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+# terraform-aws-cloudtrail [![Codefresh Build Status](https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-cloudtrail?type=cf-1)](https://g.codefresh.io/public/accounts/cloudposse/pipelines/5d128233c6e335c15aa1317c) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-cloudtrail.svg)](https://travis-ci.org/cloudposse/terraform-aws-cloudtrail/releases) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 
 
 Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtrail/).
@@ -59,13 +59,13 @@ Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest re
 ```hcl
 module "cloudtrail" {
   source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
-  namespace                     = "cp"
+  namespace                     = "eg"
   stage                         = "dev"
   name                          = "cluster"
-  enable_log_file_validation    = "true"
-  include_global_service_events = "true"
-  is_multi_region_trail         = "false"
-  enable_logging                = "true"
+  enable_log_file_validation    = true
+  include_global_service_events = true
+  is_multi_region_trail         = false
+  enable_logging                = true
   s3_bucket_name                = "my-cloudtrail-logs-bucket"
 }
 ```
@@ -77,19 +77,19 @@ It creates an S3 bucket and an IAM policy to allow CloudTrail logs.
 ```hcl
 module "cloudtrail" {
   source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=master"
-  namespace                     = "cp"
+  namespace                     = "eg"
   stage                         = "dev"
   name                          = "cluster"
-  enable_log_file_validation    = "true"
-  include_global_service_events = "true"
-  is_multi_region_trail         = "false"
-  enable_logging                = "true"
-  s3_bucket_name                = "${module.cloudtrail_s3_bucket.bucket_id}"
+  enable_log_file_validation    = true
+  include_global_service_events = true
+  is_multi_region_trail         = false
+  enable_logging                = true
+  s3_bucket_name                = module.cloudtrail_s3_bucket.bucket_id
 }
 
 module "cloudtrail_s3_bucket" {
   source    = "git::https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket.git?ref=master"
-  namespace = "cp"
+  namespace = "eg"
   stage     = "dev"
   name      = "cluster"
   region    = "us-east-1"
@@ -117,23 +117,23 @@ Available targets:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| attributes | Additional attributes (e.g. `logs`) | list | `<list>` | no |
+| attributes | Additional attributes (e.g. `logs`) | list(string) | `<list>` | no |
 | cloud_watch_logs_group_arn | Specifies a log group name using an Amazon Resource Name (ARN), that represents the log group to which CloudTrail logs will be delivered | string | `` | no |
 | cloud_watch_logs_role_arn | Specifies the role for the CloudWatch Logs endpoint to assume to write to a user’s log group | string | `` | no |
 | delimiter | Delimiter to be used between `namespace`, `stage`, `name` and `attributes` | string | `-` | no |
-| enable_log_file_validation | Specifies whether log file integrity validation is enabled. Creates signed digest for validated contents of logs | string | `true` | no |
-| enable_logging | Enable logging for the trail | string | `true` | no |
-| enabled | If true, deploy the resources for the module | string | `true` | no |
-| event_selector | Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this map variable | list | `<list>` | no |
-| include_global_service_events | Specifies whether the trail is publishing events from global services such as IAM to the log files | string | `false` | no |
-| is_multi_region_trail | Specifies whether the trail is created in the current region or in all regions | string | `false` | no |
-| is_organization_trail | The trail is an AWS Organizations trail | string | `false` | no |
+| enable_log_file_validation | Specifies whether log file integrity validation is enabled. Creates signed digest for validated contents of logs | bool | `true` | no |
+| enable_logging | Enable logging for the trail | bool | `true` | no |
+| enabled | If true, deploy the resources for the module | bool | `true` | no |
+| event_selector | Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable | list(map(string)) | `<list>` | no |
+| include_global_service_events | Specifies whether the trail is publishing events from global services such as IAM to the log files | bool | `false` | no |
+| is_multi_region_trail | Specifies whether the trail is created in the current region or in all regions | bool | `false` | no |
+| is_organization_trail | The trail is an AWS Organizations trail | bool | `false` | no |
 | kms_key_id | Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail | string | `` | no |
 | name | Name  (e.g. `app` or `cluster`) | string | - | yes |
-| namespace | Namespace (e.g. `cp` or `cloudposse`) | string | - | yes |
+| namespace | Namespace (e.g. `cp` or `cloudposse`) | string | `` | no |
 | s3_bucket_name | S3 bucket name for CloudTrail logs | string | - | yes |
-| stage | Stage (e.g. `prod`, `dev`, `staging`) | string | - | yes |
-| tags | Additional tags (e.g. map('BusinessUnit`,`XYZ`) | map | `<map>` | no |
+| stage | Stage (e.g. `prod`, `dev`, `staging`) | string | `` | no |
+| tags | Additional tags (e.g. map('BusinessUnit`,`XYZ`) | map(string) | `<map>` | no |
 
 ## Outputs
 
@@ -280,9 +280,11 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 
 ### Contributors
 
-|  [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Sergey Vasilyev][s2504s_avatar]][s2504s_homepage]<br/>[Sergey Vasilyev][s2504s_homepage] | [![Valeriy][drama17_avatar]][drama17_homepage]<br/>[Valeriy][drama17_homepage] | [![Jamie Nelson][Jamie-BitFlight_avatar]][Jamie-BitFlight_homepage]<br/>[Jamie Nelson][Jamie-BitFlight_homepage] |
-|---|---|---|---|
+|  [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] | [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Sergey Vasilyev][s2504s_avatar]][s2504s_homepage]<br/>[Sergey Vasilyev][s2504s_homepage] | [![Valeriy][drama17_avatar]][drama17_homepage]<br/>[Valeriy][drama17_homepage] | [![Jamie Nelson][Jamie-BitFlight_avatar]][Jamie-BitFlight_homepage]<br/>[Jamie Nelson][Jamie-BitFlight_homepage] |
+|---|---|---|---|---|
 
+  [osterman_homepage]: https://github.com/osterman
+  [osterman_avatar]: https://github.com/osterman.png?size=150
   [aknysh_homepage]: https://github.com/aknysh
   [aknysh_avatar]: https://github.com/aknysh.png?size=150
   [s2504s_homepage]: https://github.com/s2504s
