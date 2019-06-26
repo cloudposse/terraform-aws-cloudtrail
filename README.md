@@ -124,7 +124,7 @@ Available targets:
 | enable_log_file_validation | Specifies whether log file integrity validation is enabled. Creates signed digest for validated contents of logs | bool | `true` | no |
 | enable_logging | Enable logging for the trail | bool | `true` | no |
 | enabled | If true, deploy the resources for the module | bool | `true` | no |
-| event_selector | Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable | list(map(string)) | `<list>` | no |
+| event_selector | Specifies an event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable | object | `<list>` | no |
 | include_global_service_events | Specifies whether the trail is publishing events from global services such as IAM to the log files | bool | `false` | no |
 | is_multi_region_trail | Specifies whether the trail is created in the current region or in all regions | bool | `false` | no |
 | is_organization_trail | The trail is an AWS Organizations trail | bool | `false` | no |
