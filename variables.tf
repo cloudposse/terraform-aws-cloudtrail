@@ -81,8 +81,17 @@ variable "cloud_watch_logs_group_arn" {
 }
 
 variable "event_selector" {
-  type        = list(map(string))
-  description = "Specifies an event selector for enabling data event logging, It needs to be a list of map values. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable"
+  type = list(object({
+    include_management_events = bool
+    read_write_type           = string
+
+    data_resource = list(object({
+      type   = string
+      values = list(string)
+    }))
+  }))
+
+  description = "Specifies an event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable"
   default     = []
 }
 
