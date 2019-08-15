@@ -21,6 +21,6 @@ resource "aws_cloudtrail" "default" {
   cloud_watch_logs_group_arn    = "${var.cloud_watch_logs_group_arn}"
   tags                          = "${module.cloudtrail_label.tags}"
   event_selector                = "${var.event_selector}"
-  kms_key_id                    = "${var.kms_key_id}"
+  kms_key_id                    = "${var.kms_key_arn}"
   is_organization_trail         = "${var.is_organization_trail}"
 }
