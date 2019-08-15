@@ -128,7 +128,7 @@ Available targets:
 | include_global_service_events | Specifies whether the trail is publishing events from global services such as IAM to the log files | bool | `false` | no |
 | is_multi_region_trail | Specifies whether the trail is created in the current region or in all regions | bool | `false` | no |
 | is_organization_trail | The trail is an AWS Organizations trail | bool | `false` | no |
-| kms_key_id | Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail | string | `` | no |
+| kms_key_arn | Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail | string | `` | no |
 | name | Name  (e.g. `app` or `cluster`) | string | - | yes |
 | namespace | Namespace (e.g. `cp` or `cloudposse`) | string | `` | no |
 | s3_bucket_name | S3 bucket name for CloudTrail logs | string | - | yes |
