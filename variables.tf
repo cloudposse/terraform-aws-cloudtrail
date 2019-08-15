@@ -95,7 +95,7 @@ variable "event_selector" {
   default     = []
 }
 
-variable "kms_key_id" {
+variable "kms_key_arn" {
   type        = string
   description = "Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail"
   default     = ""
