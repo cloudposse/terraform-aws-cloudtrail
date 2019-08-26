@@ -39,6 +39,12 @@ variable "tags" {
   description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
 }
 
+variable "cloud_posse_tags" {
+  type        = bool
+  default     = true
+  description = "Specifies whether tags should be enahnced with Cloud Posse defaults"
+}
+
 variable "enable_log_file_validation" {
   type        = bool
   default     = true

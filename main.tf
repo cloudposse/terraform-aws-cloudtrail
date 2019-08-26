@@ -19,7 +19,7 @@ resource "aws_cloudtrail" "default" {
   include_global_service_events = var.include_global_service_events
   cloud_watch_logs_role_arn     = var.cloud_watch_logs_role_arn
   cloud_watch_logs_group_arn    = var.cloud_watch_logs_group_arn
-  tags                          = module.cloudtrail_label.tags
+  tags                          = var.cloud_posse_tags ? module.cloudtrail_label.tags : var.tags
   kms_key_id                    = var.kms_key_arn
   is_organization_trail         = var.is_organization_trail
 
