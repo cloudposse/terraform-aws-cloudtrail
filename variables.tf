@@ -1,42 +1,49 @@
-variable "enabled" {
-  type        = bool
-  description = "If true, deploy the resources for the module"
-  default     = true
-}
-
 variable "namespace" {
-  description = "Namespace (e.g. `cp` or `cloudposse`)"
   type        = string
   default     = ""
+  description = "Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp'"
+}
+
+variable "environment" {
+  type        = string
+  default     = ""
+  description = "Environment, e.g. 'prod', 'staging', 'dev', 'pre-prod', 'UAT'"
 }
 
 variable "stage" {
-  description = "Stage (e.g. `prod`, `dev`, `staging`)"
   type        = string
   default     = ""
+  description = "Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release'"
 }
 
 variable "name" {
-  description = "Name  (e.g. `app` or `cluster`)"
   type        = string
+  default     = ""
+  description = "Solution name, e.g. 'app' or 'jenkins'"
 }
 
 variable "delimiter" {
   type        = string
   default     = "-"
-  description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
+  description = "Delimiter to be used between `namespace`, `environment`, `stage`, `name` and `attributes`"
 }
 
 variable "attributes" {
   type        = list(string)
   default     = []
-  description = "Additional attributes (e.g. `logs`)"
+  description = "Additional attributes (e.g. `1`)"
 }
 
 variable "tags" {
   type        = map(string)
   default     = {}
-  description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
+  description = "Additional tags (e.g. `map('BusinessUnit','XYZ')`"
+}
+
+variable "enabled" {
+  type        = bool
+  description = "Set to false to prevent the module from creating any resources"
+  default     = true
 }
 
 variable "enable_log_file_validation" {
