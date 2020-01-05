@@ -1,17 +1,18 @@
-module "cloudtrail_label" {
-  source     = "git::https://github.com/cloudposse/terraform-terraform-label.git?ref=tags/0.4.0"
-  enabled    = var.enabled
-  namespace  = var.namespace
-  stage      = var.stage
-  name       = var.name
-  delimiter  = var.delimiter
-  attributes = var.attributes
-  tags       = var.tags
+module "label" {
+  source      = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
+  namespace   = var.namespace
+  stage       = var.stage
+  environment = var.environment
+  name        = var.name
+  attributes  = var.attributes
+  delimiter   = var.delimiter
+  tags        = var.tags
+  enabled     = var.enabled
 }
 
 resource "aws_cloudtrail" "default" {
   count                         = var.enabled ? 1 : 0
-  name                          = module.cloudtrail_label.id
+  name                          = module.label.id
   enable_logging                = var.enable_logging
   s3_bucket_name                = var.s3_bucket_name
   enable_log_file_validation    = var.enable_log_file_validation
@@ -19,7 +20,7 @@ resource "aws_cloudtrail" "default" {
   include_global_service_events = var.include_global_service_events
   cloud_watch_logs_role_arn     = var.cloud_watch_logs_role_arn
   cloud_watch_logs_group_arn    = var.cloud_watch_logs_group_arn
-  tags                          = module.cloudtrail_label.tags
+  tags                          = module.label.tags
   kms_key_id                    = var.kms_key_arn
   is_organization_trail         = var.is_organization_trail
 
