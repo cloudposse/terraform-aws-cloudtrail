@@ -94,6 +94,77 @@ usage: |-
   }
   ```
 
+  __NOTE:__ To create a SNS Topic & Policy for CloudTrail, and then pass the name of the topic to this module.
+
+
+  ```hcl
+  data "aws_iam_policy_document" "snsTopicPolicy" {
+      policy_id = "cloudtrail_SNS"
+
+      statement {
+          sid = "allowsnsblk1"
+          effect = "Allow"
+          principals {
+             type        = "AWS"
+             identifiers = ["*"]
+         }
+         actions = [
+             "sns:GetTopicAttributes",
+             "sns:SetTopicAttributes",
+             "sns:AddPermission",
+             "sns:RemovePermission",
+             "sns:DeleteTopic",
+             "sns:Subscribe",
+             "sns:ListSubscriptionsByTopic",
+             "sns:Publish",
+             "sns:Receive"
+        ]
+        resources = ["arn:aws:sns:${var.region}:${data.aws_caller_identity.current.account_id}:cloudtrail"]
+        condition {
+            test     = "StringEquals"
+            variable = "AWS:SourceOwner"
+            values   = ["${data.aws_caller_identity.current.account_id}"]
+        }
+      }
+
+      statement {
+          sid = "allowsnsblk2"
+          effect = "Allow"
+          principals {
+             type   = "Service"
+             identifiers = ["cloudtrail.amazonaws.com"]
+          }
+          actions = [
+               "sns:Publish"
+          ]
+          resources = ["arn:aws:sns:${var.region}:${data.aws_caller_identity.current.account_id}:cloudtrail"]
+      }
+  }
+
+  resource "aws_sns_topic" "cloudtrail" {
+    name  = "cloudtrail"
+  }
+
+  resource "aws_sns_topic_policy" "cloudtrail" {
+    arn    = "${aws_sns_topic.cloudtrail.arn}"
+    policy = "${data.aws_iam_policy_document.snsTopicPolicy.json}"
+  }
+
+  module "cloudtrail" {
+    source                        = "git::https://github.com/cloudposse/terraform-aws-cloudtrail.git?ref=0.11/master"
+    namespace                     = "cp"
+    stage                         = "dev"
+    name                          = "cluster"
+    enable_log_file_validation    = "true"
+    include_global_service_events = "true"
+    is_multi_region_trail         = "false"
+    enable_logging                = "true"
+    s3_bucket_name                = "${module.cloudtrail_s3_bucket.bucket_id}"
+    enable_sns                    = "true"
+    sns_topic_name                = "${aws_sns_topic.cloudtrail.name}"
+  }
+  ```
+
   For a complete example, see [examples/complete](examples/complete).
 
 include:
