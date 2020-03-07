@@ -23,5 +23,5 @@ resource "aws_cloudtrail" "default" {
   event_selector                = "${var.event_selector}"
   kms_key_id                    = "${var.kms_key_arn}"
   is_organization_trail         = "${var.is_organization_trail}"
-  sns_topic_name                = "${var.enable_sns == "true" ? var.sns_topic_name : ""}"
+  sns_topic_name                = "${var.sns_topic_name}"
 }
