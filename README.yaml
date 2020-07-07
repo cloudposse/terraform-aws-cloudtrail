@@ -1,4 +1,3 @@
----
 #
 # This is the canonical configuration for the `README.md`
 # Run `make readme` to rebuild the `README.md`
@@ -6,28 +5,21 @@
 
 # Name of this project
 name: terraform-aws-cloudtrail
-
 # Logo for this project
 #logo: docs/logo.png
 
 # License of this project
 license: "APACHE2"
-
 # Canonical GitHub repo
 github_repo: cloudposse/terraform-aws-cloudtrail
-
 # Badges to display
 badges:
-  - name: "Codefresh Build Status"
-    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-cloudtrail?type=cf-1"
-    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5d128233c6e335c15aa1317c"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-cloudtrail.svg"
     url: "https://travis-ci.org/cloudposse/terraform-aws-cloudtrail/releases"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
-
 related:
   - name: "terraform-aws-cloudtrail-cloudwatch-alarms"
     description: "Terraform module for creating alarms for tracking important changes and occurances from cloudtrail."
@@ -38,7 +30,6 @@ related:
   - name: "terraform-aws-s3-log-storage"
     description: "This module creates an S3 bucket suitable for receiving logs from other AWS services such as S3, CloudFront, and CloudTrail"
     url: "https://github.com/cloudposse/terraform-aws-s3-log-storage"
-
 # Short description of this project
 description: |-
   Terraform module to provision an AWS [CloudTrail](https://aws.amazon.com/cloudtrail/).
@@ -51,7 +42,6 @@ description: |-
 
   In this case, you create CloudTrail in the production environment (production AWS account),
   while the S3 bucket to store the CloudTrail logs is created in the Audit AWS account, restricting access to the logs only to the users/groups from the Audit account.
-
 # How to use this project
 usage: |-
   ```hcl
@@ -95,11 +85,9 @@ usage: |-
   ```
 
   For a complete example, see [examples/complete](examples/complete).
-
 include:
   - "docs/targets.md"
   - "docs/terraform.md"
-
 # Contributors to this project
 contributors:
   - name: "Erik Osterman"
