@@ -17,6 +17,7 @@
 | name | Name  (e.g. `app` or `cluster`) | string | - | yes |
 | namespace | Namespace (e.g. `cp` or `cloudposse`) | string | - | yes |
 | s3_bucket_name | S3 bucket name for CloudTrail logs | string | - | yes |
+| sns_topic_name | Specifies the SNS topic name to associate with CloudTrail | string | `` | no |
 | stage | Stage (e.g. `prod`, `dev`, `staging`) | string | - | yes |
 | tags | Additional tags (e.g. map('BusinessUnit`,`XYZ`) | map | `<map>` | no |
 

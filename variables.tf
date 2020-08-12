@@ -86,3 +86,8 @@ variable "is_organization_trail" {
   default     = "false"
   description = "The trail is an AWS Organizations trail"
 }
+
+variable "sns_topic_name" {
+  default     = ""
+  description = "Specifies the SNS topic name to associate with CloudTrail"
+}
