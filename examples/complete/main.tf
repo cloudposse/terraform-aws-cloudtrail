@@ -3,8 +3,7 @@ provider "aws" {
 }
 
 module "cloudtrail" {
-  source  = "../../"
-  enabled = module.this.enabled
+  source = "../../"
 
   enable_logging                = var.enable_logging
   enable_log_file_validation    = var.enable_log_file_validation
@@ -17,8 +16,7 @@ module "cloudtrail" {
 }
 
 module "cloudtrail_s3_bucket" {
-  source  = "git::https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket.git?ref=tags/0.12.0"
-  enabled = module.this.enabled
+  source = "git::https://github.com/cloudposse/terraform-aws-cloudtrail-s3-bucket.git?ref=tags/0.12.0"
 
   force_destroy = true
 
