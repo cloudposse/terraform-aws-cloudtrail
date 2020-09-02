@@ -3,21 +3,6 @@ variable "region" {
   description = "AWS region"
 }
 
-variable "namespace" {
-  description = "Namespace (e.g. `eg` or `cp`)"
-  type        = string
-}
-
-variable "stage" {
-  type        = string
-  description = "Stage (e.g. `prod`, `dev`, `staging`)"
-}
-
-variable "name" {
-  type        = string
-  description = "Name  (e.g. `app` or `cluster`)"
-}
-
 variable "enable_log_file_validation" {
   type        = bool
   description = "Specifies whether log file integrity validation is enabled. Creates signed digest for validated contents of logs"

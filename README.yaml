@@ -80,7 +80,6 @@ usage: |-
     namespace = "eg"
     stage     = "dev"
     name      = "cluster"
-    region    = "us-east-1"
   }
   ```
 
@@ -88,6 +87,7 @@ usage: |-
 include:
   - "docs/targets.md"
   - "docs/terraform.md"
+
 # Contributors to this project
 contributors:
   - name: "Erik Osterman"
