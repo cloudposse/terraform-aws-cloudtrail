@@ -4,6 +4,7 @@ resource "aws_cloudtrail" "default" {
   enable_logging                = var.enable_logging
   s3_bucket_name                = var.s3_bucket_name
   enable_log_file_validation    = var.enable_log_file_validation
+  sns_topic_name                = var.sns_topic_name
   is_multi_region_trail         = var.is_multi_region_trail
   include_global_service_events = var.include_global_service_events
   cloud_watch_logs_role_arn     = var.cloud_watch_logs_role_arn
