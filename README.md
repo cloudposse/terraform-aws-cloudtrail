@@ -181,6 +181,18 @@ Available targets:
 |------|---------|
 | aws | >= 2.0 |
 
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| this | cloudposse/label/null | 0.24.1 |
+
+## Resources
+
+| Name |
+|------|
+| [aws_cloudtrail](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudtrail) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -208,6 +220,7 @@ Available targets:
 | namespace | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
 | regex\_replace\_chars | Regex to replace chars with empty string in `namespace`, `environment`, `stage` and `name`.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | s3\_bucket\_name | S3 bucket name for CloudTrail logs | `string` | n/a | yes |
+| sns\_topic\_name | Specifies the name of the Amazon SNS topic defined for notification of log file delivery | `string` | `null` | no |
 | stage | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | tags | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
 
@@ -218,7 +231,6 @@ Available targets:
 | cloudtrail\_arn | The Amazon Resource Name of the trail |
 | cloudtrail\_home\_region | The region in which the trail was created |
 | cloudtrail\_id | The name of the trail |
-
 <!-- markdownlint-restore -->
 
 
