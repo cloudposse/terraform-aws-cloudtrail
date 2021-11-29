@@ -71,3 +71,9 @@ variable "sns_topic_name" {
   description = "Specifies the name of the Amazon SNS topic defined for notification of log file delivery"
   default     = null
 }
+
+variable "s3_key_prefix" {
+  type        = string
+  description = "Prefix for S3 bucket used by Cloudtrail to store logs"
+  default     = null
+}
