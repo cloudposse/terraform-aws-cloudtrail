@@ -39,6 +39,15 @@ variable "cloud_watch_logs_group_arn" {
   default     = ""
 }
 
+variable "insight_selector" {
+  type = list(object({
+    insight_type = string
+  }))
+
+  description = "Specifies an insight selector for type of insights to log on a trail"
+  default     = []
+}
+
 variable "event_selector" {
   type = list(object({
     include_management_events = bool
