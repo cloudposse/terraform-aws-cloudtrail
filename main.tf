@@ -26,7 +26,7 @@ resource "aws_cloudtrail" "default" {
     content {
       include_management_events = lookup(event_selector.value, "include_management_events", null)
       read_write_type           = lookup(event_selector.value, "read_write_type", null)
-
+      exclude_management_event_sources = lookup(event_selector.value, "exclude_management_event_sources", null)
       dynamic "data_resource" {
         for_each = lookup(event_selector.value, "data_resource", [])
         content {
