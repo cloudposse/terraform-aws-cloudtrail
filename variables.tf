@@ -50,9 +50,9 @@ variable "insight_selector" {
 
 variable "event_selector" {
   type = list(object({
-    include_management_events = bool
-    read_write_type           = string
-
+    include_management_events        = bool
+    read_write_type                  = string
+    exclude_management_event_sources = list(string)
     data_resource = list(object({
       type   = string
       values = list(string)
