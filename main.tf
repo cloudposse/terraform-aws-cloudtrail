@@ -36,4 +36,24 @@ resource "aws_cloudtrail" "default" {
       }
     }
   }
+
+  dynamic "advanced_event_selector" {
+    for_each = var.advanced_event_selector
+    content {
+      name = lookup(advanced_event_selector.value, "name", null)
+
+      dynamic "field_selector" {
+        for_each = advanced_event_selector.value.field_selector
+        content {
+          field           = field_selector.value.field
+          equals          = lookup(field_selector.value, "equals", null)
+          not_equals      = lookup(field_selector.value, "not_equals", null)
+          starts_with     = lookup(field_selector.value, "starts_with", null)
+          not_starts_with = lookup(field_selector.value, "not_starts_with", null)
+          ends_with       = lookup(field_selector.value, "ends_with", null)
+          not_ends_with   = lookup(field_selector.value, "not_ends_with", null)
+        }
+      }
+    }
+  }
 }
