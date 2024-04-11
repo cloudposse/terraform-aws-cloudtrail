@@ -65,7 +65,7 @@ variable "event_selector" {
 
 variable "advanced_event_selector" {
   type = list(object({
-    field_selector  = list(object({
+    field_selector = list(object({
       field           = string
       equals          = optional(list(string))
       not_equals      = optional(list(string))
@@ -74,10 +74,10 @@ variable "advanced_event_selector" {
       ends_with       = optional(list(string))
       not_ends_with   = optional(list(string))
     }))
-    name            = optional(string)
+    name = optional(string)
   }))
   description = "Specifies an advanced event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable"
-  default = []
+  default     = []
 }
 
 variable "kms_key_arn" {
