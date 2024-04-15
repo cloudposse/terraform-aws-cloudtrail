@@ -1,0 +1,7 @@
+# Upstream changes from _extends are only recognized when modifications are made to this file in the default branch.
+_extends: .github
+repository:
+  name: terraform-aws-cloudtrail
+  description: Terraform module to provision an AWS CloudTrail and an encrypted S3 bucket with versioning to store CloudTrail logs
+  homepage: https://cloudposse.com/accelerate
+  topics: terraform, terraform-modules, cloudtrail, s3, logging, hcl2
