@@ -50,8 +50,9 @@ variable "insight_selector" {
 
 variable "event_selector" {
   type = list(object({
-    include_management_events = bool
-    read_write_type           = string
+    include_management_events        = bool
+    read_write_type                  = string
+    exclude_management_event_sources = optional(set(string))
 
     data_resource = list(object({
       type   = string
@@ -60,6 +61,23 @@ variable "event_selector" {
   }))
 
   description = "Specifies an event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable"
+  default     = []
+}
+
+variable "advanced_event_selector" {
+  type = list(object({
+    name = optional(string)
+    field_selector = list(object({
+      field           = string
+      ends_with       = optional(list(string))
+      not_ends_with   = optional(list(string))
+      equals          = optional(list(string))
+      not_equals      = optional(list(string))
+      starts_with     = optional(list(string))
+      not_starts_with = optional(list(string))
+    }))
+  }))
+  description = "Specifies an advanced event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable"
   default     = []
 }
 
