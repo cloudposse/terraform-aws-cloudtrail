@@ -5,3 +5,4 @@ repository:
   description: Terraform module to provision an AWS CloudTrail and an encrypted S3 bucket with versioning to store CloudTrail logs
   homepage: https://cloudposse.com/accelerate
   topics: terraform, terraform-modules, cloudtrail, s3, logging, hcl2
+
