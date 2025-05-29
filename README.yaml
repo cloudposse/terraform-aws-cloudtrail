@@ -22,7 +22,7 @@ badges:
     url: https://github.com/cloudposse/terraform-aws-cloudtrail/commits
   - name: Slack Community
     image: https://slack.cloudposse.com/for-the-badge.svg
-    url: https://slack.cloudposse.com
+    url: https://cloudposse.com/slack
 
 # List any related terraform modules that this module may be used with or that this module depends on.
 related:
@@ -95,9 +95,5 @@ usage: |-
   ```
 
   For a complete example, see [examples/complete](examples/complete).
-include:
-  - "docs/targets.md"
-  - "docs/terraform.md"
-
-# Contributors to this project
+include: []
 contributors: []
