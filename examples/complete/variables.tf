@@ -27,3 +27,20 @@ variable "is_organization_trail" {
   type        = bool
   description = "The trail is an AWS Organizations trail"
 }
+
+variable "advanced_event_selector" {
+  type = list(object({
+    name = optional(string)
+    field_selector = list(object({
+      field           = string
+      ends_with       = optional(list(string))
+      not_ends_with   = optional(list(string))
+      equals          = optional(list(string))
+      not_equals      = optional(list(string))
+      starts_with     = optional(list(string))
+      not_starts_with = optional(list(string))
+    }))
+  }))
+  description = "Specifies an advanced event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable"
+  default     = []
+}

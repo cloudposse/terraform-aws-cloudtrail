@@ -1,5 +1,3 @@
-enabled = true
-
 region = "us-east-2"
 
 namespace = "eg"
@@ -17,3 +15,22 @@ include_global_service_events = false
 enable_logging = true
 
 is_organization_trail = false
+
+advanced_event_selector = [
+  {
+    name = "WriteOnly"
+    field_selector = [
+      {
+        field  = "eventCategory"
+        equals = ["Data"]
+      },
+      {
+        field  = "resources.type"
+        equals = ["AWS::Lambda::Function"]
+      },
+      {
+        field  = "readOnly"
+        equals = ["false"]
+    }]
+  }
+]
