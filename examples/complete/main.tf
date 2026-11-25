@@ -12,6 +12,7 @@ module "cloudtrail" {
   is_organization_trail         = var.is_organization_trail
   s3_bucket_name                = module.cloudtrail_s3_bucket.bucket_id
   advanced_event_selector       = var.advanced_event_selector
+  recursive_logging             = var.recursive_logging
 
   context = module.this.context
 }

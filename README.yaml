@@ -95,5 +95,9 @@ usage: |-
   ```
 
   For a complete example, see [examples/complete](examples/complete).
+
+  __NOTE:__ A trail that logs S3 data events for its own delivery bucket also logs CloudTrail's own
+  log file deliveries. Set `recursive_logging = false` to suppress those events (requires AWS provider >= 6.72.0).
+  See [Recursive logging](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-trail-recursive-logging.html).
 include: []
 contributors: []

@@ -44,3 +44,9 @@ variable "advanced_event_selector" {
   description = "Specifies an advanced event selector for enabling data event logging. See: https://www.terraform.io/docs/providers/aws/r/cloudtrail.html for details on this variable"
   default     = []
 }
+
+variable "recursive_logging" {
+  type        = bool
+  description = "Whether CloudTrail logs the events it generates when delivering log files"
+  default     = null
+}
