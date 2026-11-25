@@ -34,3 +34,5 @@ advanced_event_selector = [
     }]
   }
 ]
+
+recursive_logging = false

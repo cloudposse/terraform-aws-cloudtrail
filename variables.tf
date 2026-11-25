@@ -104,3 +104,14 @@ variable "s3_key_prefix" {
   description = "Prefix for S3 bucket used by Cloudtrail to store logs"
   default     = null
 }
+
+variable "recursive_logging" {
+  type        = bool
+  description = <<-EOT
+    Whether CloudTrail logs the events it generates when delivering log files to the trail's destinations
+    (Amazon S3, CloudWatch Logs). Set to `false` to suppress them, for example when the trail logs S3 data
+    events for its own delivery bucket. `null` (default) leaves the AWS default, which is `true`.
+    See https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-trail-recursive-logging.html
+  EOT
+  default     = null
+}

@@ -13,6 +13,7 @@ resource "aws_cloudtrail" "default" {
   kms_key_id                    = var.kms_key_arn
   is_organization_trail         = var.is_organization_trail
   s3_key_prefix                 = var.s3_key_prefix
+  recursive_logging             = var.recursive_logging
 
   dynamic "insight_selector" {
     for_each = var.insight_selector
